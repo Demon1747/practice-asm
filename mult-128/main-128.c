@@ -5,8 +5,8 @@
 #define LOW_32_MASK 0xFFFFFFFF
 #define HIGH_32_MASK 0xFFFFFFFF00000000
 
-//#define mul128(res, mul1, mul2) c_mul128(res, mul1, mul2)
-#define mul128(res, mul1, mul2) x64_mul128(res, mul1, mul2)
+#define mul128(res, mul1, mul2) c_mul128(res, mul1, mul2)
+//#define mul128(res, mul1, mul2) x64_mul128(res, mul1, mul2)
 //#define mul128(res, mul1, mul2) arn64_mul128(res, mul1, mul2)
 
 // constants for etalon test
@@ -119,3 +119,4 @@ int main() {
 
   return 0;
 }
+

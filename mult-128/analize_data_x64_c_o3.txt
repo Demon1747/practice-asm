@@ -1,0 +1,11 @@
+# started on Sun Oct  6 20:23:39 2024
+
+
+ Performance counter stats for './mult_128_c_o3' (10 runs):
+
+     1,606,408,397 ns   user_time:u                                                             ( +-  0.30% )
+     6,477,550,958      instructions:u                   #    1.33  insn per cycle              ( +-  0.00% )
+     4,856,991,996      cycles:u                                                                ( +-  0.25% )
+
+            1.6193 +- 0.0120 seconds time elapsed  ( +-  0.74% )
+
