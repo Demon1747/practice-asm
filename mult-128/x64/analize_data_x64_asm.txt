@@ -1,0 +1,11 @@
+# started on Sun Oct  6 20:30:05 2024
+
+
+ Performance counter stats for './x64_mult_128' (10 runs):
+
+     1,513,481,935 ns   user_time:u                                                             ( +-  0.13% )
+     5,317,550,932      instructions:u                   #    1.15  insn per cycle              ( +-  0.00% )
+     4,618,221,999      cycles:u                                                                ( +-  0.00% )
+
+           1.50990 +- 0.00376 seconds time elapsed  ( +-  0.25% )
+

@@ -1,0 +1,11 @@
+# started on Sun Oct  6 20:30:20 2024
+
+
+ Performance counter stats for './x64_mult_128_o3' (10 runs):
+
+     1,512,565,128 ns   user_time:u                                                             ( +-  0.18% )
+     5,247,550,242      instructions:u                   #    1.13  insn per cycle              ( +-  0.00% )
+     4,627,127,397      cycles:u                                                                ( +-  0.19% )
+
+           1.51345 +- 0.00669 seconds time elapsed  ( +-  0.44% )
+
