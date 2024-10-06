@@ -6,8 +6,8 @@
 #define HIGH_32_MASK 0xFFFFFFFF00000000
 
 //#define mul128(res, mul1, mul2) c_mul128(res, mul1, mul2)
-#define mul128(res, mul1, mul2) x64_mul128(res, mul1, mul2)
-//#define mul128(res, mul1, mul2) arn64_mul128(res, mul1, mul2)
+//#define mul128(res, mul1, mul2) x64_mul128(res, mul1, mul2)
+#define mul128(res, mul1, mul2) arm64_mul128(res, mul1, mul2)
 
 // constants for etalon test
 uint64_t etalon_a[] = {0xCAFEB0BADEADBEEF, 0x1234567890ABCDEF};
@@ -17,7 +17,7 @@ uint64_t etalon_res[] = {0x57116CCC1A3CB9A6, 0x2E81A234FF775817,
 
 // prototypes for different assembly functions
 void x64_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2);
-void arm64_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2);
+extern void arm64_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2);
 
 void c_mul64(uint64_t* res, uint64_t mul1, uint64_t mul2) {
   uint64_t lo_a = mul1 & LOW_32_MASK;
@@ -119,3 +119,4 @@ int main() {
 
   return 0;
 }
+
