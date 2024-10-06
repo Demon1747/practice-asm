@@ -1,0 +1,11 @@
+# started on Sun Oct  6 19:54:47 2024
+
+
+ Performance counter stats for './mult_128_c' (10 runs):
+
+          8,010.92 msec task-clock:u              #    1.000 CPUs utilized            ( +-  0.00% )
+    12,065,402,794      instructions:u            #    0.84  insn per cycle           ( +-  0.00% )
+    14,404,957,642      cycles:u                  #    1.798 GHz                      ( +-  0.00% )
+
+          8.013337 +- 0.000161 seconds time elapsed  ( +-  0.00% )
+
