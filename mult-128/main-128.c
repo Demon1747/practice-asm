@@ -1,6 +1,5 @@
 #include <memory.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 #define LOW_32_MASK 0xFFFFFFFF
@@ -16,9 +15,9 @@ uint64_t etalon_res[] = {0x57116CCC1A3CB9A6, 0x2E81A234FF775817,
 void arm64_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2);
 
 void c_mul64(uint64_t* res, uint64_t mul1, uint64_t mul2) {
-  uint64_t lo_a = mul1 & LOW_32_BIT_MASK;
+  uint64_t lo_a = mul1 & LOW_32_MASK;
   uint64_t hi_a = mul1 >> 0x20;
-  uint64_t lo_b = mul2 & LOW_32_BIT_MASK;
+  uint64_t lo_b = mul2 & LOW_32_MASK;
   uint64_t hi_b = mul2 >> 0x20;
   uint64_t res_32_96;
 
@@ -38,9 +37,9 @@ void c_mul64(uint64_t* res, uint64_t mul1, uint64_t mul2) {
     ++carry;
   }
 
-  res[0] = (res_32_96 << 0x20) | (res[0] & LOW_32_BIT_MASK);
+  res[0] = (res_32_96 << 0x20) | (res[0] & LOW_32_MASK);
   res[1] =
-      ((res[1] & HIGH_32_BIT_MASK) + (carry << 0x20)) | (res_32_96 >> 0x20);
+      ((res[1] & HIGH_32_MASK) + (carry << 0x20)) | (res_32_96 >> 0x20);
 }
 
 void c_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2) {
@@ -104,7 +103,7 @@ int main() {
   srand(2024);
 
   // performance test
-  for (size_t i = 0; i < 10000; ++i) {
+  for (size_t i = 0; i < 10000000; ++i) {
     mul_a[0] = ((uint64_t)rand() << 0x20) | rand();
     mul_a[1] = ((uint64_t)rand() << 0x20) | rand();
     mul_b[0] = ((uint64_t)rand() << 0x20) | rand();
