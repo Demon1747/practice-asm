@@ -5,9 +5,9 @@
 #define LOW_32_MASK 0xFFFFFFFF
 #define HIGH_32_MASK 0xFFFFFFFF00000000
 
-//#define mul128(res, mul1, mul2) c_mul128(res, mul1, mul2)
+#define mul128(res, mul1, mul2) c_mul128(res, mul1, mul2)
 //#define mul128(res, mul1, mul2) x64_mul128(res, mul1, mul2)
-#define mul128(res, mul1, mul2) arm64_mul128(res, mul1, mul2)
+//#define mul128(res, mul1, mul2) arn64_mul128(res, mul1, mul2)
 
 // constants for etalon test
 uint64_t etalon_a[] = {0xCAFEB0BADEADBEEF, 0x1234567890ABCDEF};
@@ -17,7 +17,7 @@ uint64_t etalon_res[] = {0x57116CCC1A3CB9A6, 0x2E81A234FF775817,
 
 // prototypes for different assembly functions
 void x64_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2);
-extern void arm64_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2);
+void arm64_mul128(uint64_t* res, uint64_t* mul1, uint64_t* mul2);
 
 void c_mul64(uint64_t* res, uint64_t mul1, uint64_t mul2) {
   uint64_t lo_a = mul1 & LOW_32_MASK;
@@ -26,15 +26,12 @@ void c_mul64(uint64_t* res, uint64_t mul1, uint64_t mul2) {
   uint64_t hi_b = mul2 >> 0x20;
   uint64_t res_32_96;
 
-  // 0 * 1 + 1 * 0
-  uint64_t tmp_32_96 = lo_a * hi_b + hi_a * lo_b;
-  uint64_t carry = tmp_32_96 < lo_a * hi_b ? 1 : 0;
+  uint64_t tmp_0_1 = lo_a * hi_b;              // 0 * 1
+  uint64_t tmp_32_96 = tmp_0_1 + hi_a * lo_b;  // 1 * 0
+  uint64_t carry = tmp_32_96 < tmp_0_1 ? 1 : 0;
 
-  // 0 * 0
-  res[0] = lo_a * lo_b;
-
-  // 1 * 1
-  res[1] = hi_a * hi_b;
+  res[0] = lo_a * lo_b;  // 0 * 0
+  res[1] = hi_a * hi_b;  // 1 * 1
 
   res_32_96 = (res[1] << 0x20) | (res[0] >> 0x20);
   res_32_96 += tmp_32_96;
@@ -119,4 +116,3 @@ int main() {
 
   return 0;
 }
-
