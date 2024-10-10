@@ -1,0 +1,11 @@
+# started on Sun Oct  6 19:32:25 2024
+
+
+ Performance counter stats for './arm64_mult_128_o3' (10 runs):
+
+          4,495.71 msec task-clock:u              #    1.000 CPUs utilized            ( +-  0.00% )
+     7,439,705,145      instructions:u            #    0.92  insn per cycle           ( +-  0.00% )
+     8,083,837,481      cycles:u                  #    1.798 GHz                      ( +-  0.00% )
+
+          4.497677 +- 0.000185 seconds time elapsed  ( +-  0.00% )
+
