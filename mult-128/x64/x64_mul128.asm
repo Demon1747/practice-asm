@@ -40,3 +40,4 @@ x64_mul128:
 	mov qword [rdi + 0x10], r10
 	mov qword [rdi + 0x18], r11
 	ret
+
