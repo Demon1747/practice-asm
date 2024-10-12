@@ -1,0 +1,11 @@
+# started on Sun Oct 13 00:08:18 2024
+
+
+ Performance counter stats for './mult_128_c' (10 runs):
+
+     1,996,008,860 ns   user_time:u                                                             ( +-  0.22% )
+     9,519,429,515      instructions:u                   #    1.59  insn per cycle              ( +-  0.00% )
+     5,996,950,007      cycles:u                                                                ( +-  0.22% )
+
+            2.0014 +- 0.0105 seconds time elapsed  ( +-  0.52% )
+
